@@ -1,5 +1,5 @@
 # Avalanche-Python-API
-Avalanche C-Chain buy/sell bot in Python
+Avalanche C-Chain buy/sell bot in Python using web3
 
 
 # Example code:
