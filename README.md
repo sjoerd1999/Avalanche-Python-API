@@ -31,14 +31,13 @@ approve_receipt = avapi.awaitReceipt(approve_tx)
 print(approve_receipt)
 
 # Get info about the token, and get current token value. 
-# Useful if we want to sell when we hit 2x the value we bought at
+# Useful if we want to sell when we for example hit 2x the value we bought at
 balance, value = avapi.get_token_holdings(address)
 symbol, decimals = avapi.get_token_info(address)
-print(balance, symbol, decimals, value)
 print(f'We have {balance/(10**decimals)} {symbol}, worth {value/(10**18)} AVAX')
 
 # Sell the token, we can set a percentage to sell
-sell_tx = avapi.sell(address, sell_prcnt=50)
+sell_tx = avapi.sell(address, sell_prcnt=50) # Here we sell half of our tokens (50%)
 print(sell_tx)
 sell_receipt = avapi.awaitReceipt(sell_tx)
 print(sell_receipt)
