@@ -85,10 +85,11 @@ class AvalancheAPI(object):
         ).buildTransaction({
             'from': config.SENDER_ADDRESS,
             'gas': 200000,
-            'gasPrice': self.web3.toWei('100', 'gwei'),
+            'maxFeePerGas': self.web3.toWei('150', 'gwei'),
+            'maxPriorityFeePerGas': self.web3.toWei('15', 'gwei'),
             'nonce': self.web3.eth.get_transaction_count(config.SENDER_ADDRESS),
         })
-
+        print(f'Estimated gas for transaction is {self.web3.eth.estimate_gas(txn)}.')
         signed_txn = self.web3.eth.account.sign_transaction(txn, private_key=config.PRIVATE_KEY)
         tx_token = self.web3.eth.send_raw_transaction(signed_txn.rawTransaction)
         tx = self.web3.toHex(tx_token)
